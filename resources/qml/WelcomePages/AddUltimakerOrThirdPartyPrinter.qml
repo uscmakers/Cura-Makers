@@ -49,20 +49,11 @@ Control
 
             PrinterCard
             {
-                id: ultimakerPrinterCard
-                Layout.alignment: Qt.AlignBottom
-                onClicked: goToUltimakerPrinter
-                text: catalog.i18nc("@button", "UltiMaker printer")
-                imageSource: UM.Theme.getImage("ultimaker_printer")
-            }
-
-            PrinterCard
-            {
                 id: thrirdPartyPrinterCard
                 Layout.alignment: Qt.AlignBottom
                 onClicked: goToThirdPartyPrinter
-                text: catalog.i18nc("@button", "Non UltiMaker printer")
-                imageSource: UM.Theme.getImage("third_party_printer")
+                text: catalog.i18nc("@button", "The Pipeline 3D Printer")
+                imageSource: UM.Theme.getImage("pipeline_home")
             }
         }
 

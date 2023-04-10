@@ -39,10 +39,10 @@ pyinstaller:
             package: "cura_binary_data"
             src: "windows"
             dst: "share/windows"
-        fdm_materials:
-            package: "fdm_materials"
-            src: "materials"
-            dst: "share/cura/resources/materials"
+        # fdm_materials:
+        #     package: "fdm_materials"
+        #     src: "materials"
+        #     dst: "share/cura/resources/materials"
         tcl:
             package: "tcl"
             src: "lib/tcl8.6"

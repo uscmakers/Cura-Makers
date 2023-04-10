@@ -1,0 +1,56 @@
+{
+    "version": 2,
+    "name": "Pipeline - Dual Color",
+    "inherits": "fdmprinter",
+    "metadata":
+    {
+        "visible": true,
+        "author": "Terry Lu <jiatinglu99@gmail.com>",
+        "manufacturer": "USC Makers Pipeline",
+        "file_formats": "text/x-gcode",
+        "platform": "lulzbot_taz_pro_bed.stl",
+        "has_variants": false,
+        "has_machine_quality": false,
+        "machine_extruder_trains":
+        {
+            "0": "pipeline_idex_extruder_0",
+            "1": "pipeline_idex_extruder_1"
+        },
+        "platform_offset": [0, -10, 0],
+        "preferred_quality_type": "normal",
+        "preferred_material": "polymax_pla"
+    },
+    "overrides":
+    {
+        "layer_start_x": { "value": 100 },
+        "layer_start_y": { "value": 100 },
+
+        "machine_name": { "default_value": "Pipeline - Dual Color Mode" },
+        "machine_extruder_count": { "default_value": 2 },
+        "machine_nozzle_size": { "default_value": 0.5 },
+        "material_diameter": { "default_value": 2.85 },
+        "machine_width": { "default_value": 280 },
+        "machine_depth": { "default_value": 280 },
+        "machine_height": { "default_value": 250 },
+        "machine_buildplate_type": {"default_value": "aluminum"},
+        "machine_heated_bed": { "default_value": true },
+        "acceleration_print": { "default_value": 500 },
+        "jerk_print": { "default_value": 12 },
+        "machine_acceleration": { "default_value": 500 },
+        "machine_center_is_zero": { "default_value": false },
+        "machine_gcode_flavor": { "default_value": "RepRap (Marlin/Sprinter)" },
+        "machine_max_acceleration_e": { "default_value": 1000 },
+        "machine_max_acceleration_x": { "default_value": 9000 },
+        "machine_max_acceleration_y": { "default_value": 9000 },
+        "machine_max_acceleration_z": { "default_value": 100 },
+        "material_print_temperature": {"default_value": 225, "minimum_value": "0"},
+        "material_print_temperature_layer_0": {"default_value": 225, "minimum_value": "0"},
+        "material_standby_temperature": {"default_value": 215},
+
+        "adhesion_type": { "default_value": "none" },
+        "ooze_shield_enabled": { "default_value": true },
+
+        "machine_start_gcode": { "default_value": "G28 ;Home\nZ_TILT_ADJUST\nG28 ;Home\nBED_MESH_CALIBRATE\nG1 Z15.0 F6000 ;Move the platform down 15mm" },
+        "machine_end_gcode": { "default_value": "M104 S0\nM140 S0\n;Retract the filament\nG92 E1\nG1 E0 F300\nG28 X\nG1 Y300 F1000\nM190 R25\nG4 P3600000\nPUSHA_PUSH_OFF" }
+    }
+}

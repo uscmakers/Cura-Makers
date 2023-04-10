@@ -43,7 +43,7 @@ class CuraConan(ConanFile):
         "staging": "False",
         "devtools": False,
         "cloud_api_version": "1",
-        "display_name": "UltiMaker Cura",
+        "display_name": "Cura Makers Edition",
         "cura_debug_mode": False,  # Not yet implemented
         "internal": False,
     }
@@ -155,7 +155,9 @@ class CuraConan(ConanFile):
         pre_tag = f"-{cura_version.pre}" if cura_version.pre else ""
         build_tag = f"+{cura_version.build}" if cura_version.build else ""
         internal_tag = f"+internal" if self.options.internal else ""
-        cura_version = f"{cura_version.major}.{cura_version.minor}.{cura_version.patch}{pre_tag}{build_tag}{internal_tag}"
+        # cura_version = f"{cura_version.major}.{cura_version.minor}.{cura_version.patch}{pre_tag}{build_tag}{internal_tag}"
+        # override cura_version to below description
+        cura_version = f"Ultimaker Cura 5.3.0 Fork"
 
         with open(os.path.join(location, "CuraVersion.py"), "w") as f:
             f.write(cura_version_py.render(
@@ -283,7 +285,7 @@ class CuraConan(ConanFile):
         self.requires("pysavitar/5.2.2")
         self.requires("pynest2d/5.2.2")
         self.requires("uranium/5.3.0")
-        self.requires("fdm_materials/5.3.0")
+        # self.requires("fdm_materials/5.3.0")
         self.requires("cura_binary_data/5.3.0")
         self.requires("cpython/3.10.4")
         if self.options.internal:
@@ -346,9 +348,10 @@ class CuraConan(ConanFile):
         self.copy("CuraEngine.exe", root_package = "curaengine", src = "@bindirs", dst = "", keep_path = False)
         self.copy("CuraEngine", root_package = "curaengine", src = "@bindirs", dst = "", keep_path = False)
 
-        rmdir(self, os.path.join(self.source_folder, "resources", "materials"))
-        self.copy("*.fdm_material", root_package = "fdm_materials", src = "@resdirs", dst = "resources/materials", keep_path = False)
-        self.copy("*.sig", root_package = "fdm_materials", src = "@resdirs", dst = "resources/materials", keep_path = False)
+        # ! disable copying of fdm_materials
+        # rmdir(self, os.path.join(self.source_folder, "resources", "materials"))
+        # self.copy("*.fdm_material", root_package = "fdm_materials", src = "@resdirs", dst = "resources/materials", keep_path = False)
+        # self.copy("*.sig", root_package = "fdm_materials", src = "@resdirs", dst = "resources/materials", keep_path = False)
 
         if self.options.internal:
             self.copy("*", root_package = "cura_private_data", src = self.deps_cpp_info["cura_private_data"].resdirs[0],
@@ -380,11 +383,12 @@ class CuraConan(ConanFile):
         self.copy("*", src = self.cpp_info.resdirs[0], dst = self._share_dir.joinpath("cura", "resources"), keep_path = True)
         self.copy("*", src = self.cpp_info.resdirs[1], dst = self._share_dir.joinpath("cura", "plugins"), keep_path = True)
 
+        # !disables copying of fdm_materials from packages
         # Copy materials (flat)
-        self.copy_deps("*.fdm_material", root_package = "fdm_materials", src = self.deps_cpp_info["fdm_materials"].resdirs[0],
-                       dst = self._share_dir.joinpath("cura", "resources", "materials"), keep_path = False)
-        self.copy_deps("*.sig", root_package = "fdm_materials", src = self.deps_cpp_info["fdm_materials"].resdirs[0],
-                       dst = self._share_dir.joinpath("cura", "resources", "materials"), keep_path = False)
+        # self.copy_deps("*.fdm_material", root_package = "fdm_materials", src = self.deps_cpp_info["fdm_materials"].resdirs[0],
+        #                dst = self._share_dir.joinpath("cura", "resources", "materials"), keep_path = False)
+        # self.copy_deps("*.sig", root_package = "fdm_materials", src = self.deps_cpp_info["fdm_materials"].resdirs[0],
+        #                dst = self._share_dir.joinpath("cura", "resources", "materials"), keep_path = False)
 
         # Copy internal resources
         if self.options.internal:

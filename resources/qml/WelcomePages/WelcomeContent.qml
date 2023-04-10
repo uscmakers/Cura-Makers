@@ -33,7 +33,7 @@ Item
         {
             id: curaImage
             anchors.horizontalCenter: parent.horizontalCenter
-            source: UM.Theme.getImage("welcome_cura")
+            source: UM.Theme.getImage("makers-icon-32")
             fillMode: Image.PreserveAspectFit
             width: UM.Theme.getSize("welcome_wizard_content_image_big").width
             sourceSize.width: width
@@ -52,7 +52,7 @@ Item
             id: titleLabel
             anchors.horizontalCenter: parent.horizontalCenter
             horizontalAlignment: Text.AlignHCenter
-            text: "Welcome to UltiMaker Cura"
+            text: "Welcome to Cura Makers Edition"
             color: UM.Theme.getColor("primary_button")
             font: UM.Theme.getFont("huge_bold")
         }
@@ -63,7 +63,7 @@ Item
             anchors.horizontalCenter: parent.horizontalCenter
             horizontalAlignment: Text.AlignHCenter
             width: titleLabel.width + 2 * UM.Theme.getSize("thick_margin").width
-            text: "Please follow these steps to set up UltiMaker Cura. This will only take a few moments."
+            text: "Please note that this is a customized version of UltiMaker Cura 5.3.0 created specifically for USC Makers club members to utilize with the Pipeline 3D printer. \n\nThis software adheres to the LGPL-3.0 license, as does the orignal Ultimaker Cura, meaning the source code is freely available for modification and distribution."
             font: UM.Theme.getFont("medium")
         }
 

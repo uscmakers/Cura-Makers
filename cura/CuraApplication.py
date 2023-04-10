@@ -158,10 +158,10 @@ class CuraApplication(QtApplication):
                          api_version = ApplicationMetadata.CuraSDKVersion,
                          build_type = ApplicationMetadata.CuraBuildType,
                          is_debug_mode = ApplicationMetadata.CuraDebugMode,
-                         tray_icon_name = "cura-icon-32.png" if not ApplicationMetadata.IsAlternateVersion else "cura-icon-32_wip.png",
+                         tray_icon_name = "makers-icon-32.png" if not ApplicationMetadata.IsAlternateVersion else "makers-icon-32_wip.png",
                          **kwargs)
 
-        self.default_theme = "cura-light"
+        self.default_theme = "cura-dark"
 
         self.change_log_url = "https://ultimaker.com/ultimaker-cura-latest-features?utm_source=cura&utm_medium=software&utm_campaign=cura-update-features"
         self.beta_change_log_url = "https://ultimaker.com/ultimaker-cura-beta-features?utm_source=cura&utm_medium=software&utm_campaign=cura-update-features"
@@ -494,7 +494,7 @@ class CuraApplication(QtApplication):
 
         if not self.getIsHeadLess():
             try:
-                self.setWindowIcon(QIcon(Resources.getPath(Resources.Images, "cura-icon.png" if not ApplicationMetadata.IsAlternateVersion else "cura-icon_wip.png")))
+                self.setWindowIcon(QIcon(Resources.getPath(Resources.Images, "makers-icon.png" if not ApplicationMetadata.IsAlternateVersion else "makers-icon_wip.png")))
             except FileNotFoundError:
                 Logger.log("w", "Unable to find the window icon.")
 

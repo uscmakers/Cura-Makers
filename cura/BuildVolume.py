@@ -792,6 +792,7 @@ class BuildVolume(SceneNode):
             result_areas_no_brim[extruder_id].extend(prime_areas[extruder_id])
 
             nozzle_disallowed_areas = extruder.getProperty("nozzle_disallowed_areas", "value")
+            print("-------------", nozzle_disallowed_areas)
             for area in nozzle_disallowed_areas:
                 polygon = Polygon(numpy.array(area, numpy.float32))
                 polygon_disallowed_border = polygon.getMinkowskiHull(Polygon.approximatedCircle(disallowed_border_size))
