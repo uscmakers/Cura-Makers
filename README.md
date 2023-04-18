@@ -1,3 +1,12 @@
+To build Windows installer EXE, run the following command in the root of the repository:
+
+conan install . --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=false -o cura:staging=false --json "cura_inst/conan_install_info.json"
+
+.\venv\Scripts\activate_github_actions_env.ps1
+.\venv\Scripts\activate_github_actions_version_env.ps1
+
+python packaging\NSIS\create_windows_installer.py ./cura_inst . "TEST_HELLO"
+
 
 <br>
 
